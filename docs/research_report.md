@@ -156,6 +156,17 @@ The GTR's Gulf vessel table (vessels loaded in the last 7 days, due in the next 
 - It still does not beat the historical mean on forecast error, and it is not significant after correction.
 - **Status:** the leading candidate for re-testing on Bloomberg contract prices and on higher-frequency AIS ship data. It is not a validated signal.
 
+### 4.7 Non-transport factors (added later; `factor_research.py`, `results/performance/factor_tests.csv`)
+The same walk-forward, net-of-cost framework was applied to free non-transport data. "2016+" is a common window in which every factor is live.
+
+- **Sources:** CFTC Commitments of Traders (managed money and producer positioning, open interest), EIA weekly ethanol output, US Drought Monitor (Corn Belt), Mississippi river stage at St. Louis, soybean board crush margin, and time-series momentum (both fitted and rule-based).
+- **Two versions per signal:** "Sharpe" trades the sign of the forecast. "Timing Sharpe" trades only deviations of the forecast from its own trailing average, which removes any long or short drift the model learned in training.
+- **Results:** 49 signal × crop tests in total. No factor's Clark-West p survives BH correction (all adjusted p ≥ 0.93).
+  - Corn: the best is still Gulf vessels due, with Sharpe 0.74 [0.18, 1.33]. Its timing-only Sharpe is 0.22, so most of the 0.74 came from a short bias that happened to pay as corn fell in 2022-24.
+  - Soybeans: the best timing-only Sharpes are river-stage anomaly 0.61, open-interest change 0.40, Iowa rail 0.36 and crush margin 0.35. None has a CI excluding zero.
+  - Momentum (rule-based) ranges from −0.19 to +0.21. Combinations (equal-weight, ridge, lasso) do no better than the best single factor, and the soybean equal-weight ensemble is simply long all the time.
+- **Conclusion:** none of the free weekly datasets gives a statistically defensible edge on its own. With about 50 tests, one or two confidence intervals excluding zero is expected by chance.
+
 ## 5. Limitations
 
 - **Sample size.** The Iowa anomaly needs two prior years, and the walk-forward needs three years of training, so the Iowa out-of-sample period is under five years. The only long-history variables (inspections, sales, costs, basis) show nothing out-of-sample over 10+ years.

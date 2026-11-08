@@ -36,9 +36,14 @@ def cost_per_side(price_dollars: pd.Series, ticks=1.0, cost_mult=1.0) -> pd.Seri
 
 
 def positions_from_forecast(pred: pd.Series, vol: pd.Series, k=0.5, target_vol=0.10,
-                            max_lev=3.0, z_window=52, z_min=26) -> pd.Series:
+                            max_lev=3.0, z_window=52, z_min=26, demean=False) -> pd.Series:
+    """demean=False: trade the sign of the forecast itself (keeps any long/short
+    bias the model learned, e.g. from a positive average return in training).
+    demean=True: trade only DEVIATIONS of the forecast from its own trailing
+    average = pure timing skill, with the model's built-in drift removed."""
     sd = pred.rolling(z_window, min_periods=z_min).std().shift(1)   # past forecasts only
-    z = pred / sd
+    centre = pred.rolling(z_window, min_periods=z_min).mean().shift(1) if demean else 0.0
+    z = (pred - centre) / sd
     direction = np.where(z > k, 1.0, np.where(z < -k, -1.0, 0.0))
     direction = pd.Series(direction, index=pred.index).where(z.notna(), 0.0)
     size = (target_vol / vol).clip(upper=max_lev)
