@@ -45,7 +45,8 @@ IOWA_UNIVERSE = ["ia_railcars__anomz", "us_railcars__anomz", "barge_com_tons__an
                  "basis_ia_com__anomz", "basis_gulf_com__anomz"]
 LONG_UNIVERSE = ["nola_unloads__anomz", "insp_com_mt__anomz", "sales_com_exports__anomz",
                  "sales_com_net_sales__anomz", "cost_truck__anomz", "cost_barge__anomz",
-                 "barge_rate_stl__anomz", "basis_ia_com__anomz", "basis_gulf_com__anomz"]
+                 "barge_rate_stl__anomz", "basis_ia_com__anomz", "basis_gulf_com__anomz",
+                 "vessel_gulf_loaded__anomz", "vessel_gulf_due__anomz"]
 CTRL = ["mom_4w", "mom_12w", "vol_12w", "harvest", "planting", "growing"]
 
 

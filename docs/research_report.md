@@ -142,6 +142,20 @@ Other transforms of Iowa and all-US rail (week-over-week, year-over-year, 52-wee
 ### 4.5 Iowa traffic diagnostic
 FHWA rural-interstate volumes were given an **unrealistically short** 6-day publication lag (the real lag is months) to test whether the information exists at all. No transform is significant after correction; the best is week-over-week at h = 2, raw p = 0.04 for corn. Even with an impossible information advantage, the all-vehicle traffic counts carry no detectable price information.
 
+### 4.6 Export vessel line-ups (added later)
+The GTR's Gulf vessel table (vessels loaded in the last 7 days, due in the next 10 days, in port; PNW in port) goes back to 1995. It is published a week after the reading date, so it enters with a +7-day lag. This is the long-history, free version of the ship-tracking idea.
+
+| Vessel anomaly (z) | Corn OOS Sharpe, 2015-26 | Corn OOS R² (CW p) | Soy OOS Sharpe, 2015-26 |
+|---|---|---|---|
+| Gulf vessels **due** next 10 days | **0.54** | −0.12% (0.12) | 0.23 |
+| Gulf vessels loaded last 7 days | 0.23 | −0.17% (0.14) | −0.01 |
+| Gulf / PNW vessels in port | −0.58 / −0.36 | negative | 0.09 / 0.20 |
+
+- In-sample, "vessels due" is the only one significant before correction, for corn at h = 1, 2 and 4 (t = 2.2-2.4), with BH-adjusted p ≥ 0.19.
+- Over 2015-2026 it is the strongest corn signal in the study (Sharpe 0.54, roughly t = 1.8 over 11 years). The sign is economically sensible: more ships lining up to load means stronger export demand and higher corn prices.
+- It still does not beat the historical mean on forecast error, and it is not significant after correction.
+- **Status:** the leading candidate for re-testing on Bloomberg contract prices and on higher-frequency AIS ship data. It is not a validated signal.
+
 ## 5. Limitations
 
 - **Sample size.** The Iowa anomaly needs two prior years, and the walk-forward needs three years of training, so the Iowa out-of-sample period is under five years. The only long-history variables (inspections, sales, costs, basis) show nothing out-of-sample over 10+ years.

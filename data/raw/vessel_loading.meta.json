@@ -1,0 +1,8 @@
+{
+  "source": "USDA AMS AgTransport",
+  "dataset_id": "vh5k-mnyv",
+  "url": "https://agtransport.usda.gov/d/vh5k-mnyv",
+  "soql": "SELECT date, port, in_port, loaded_7_days, due_10_days ORDER BY date, port",
+  "rows": 4983,
+  "downloaded_utc": "2026-11-08T21:51:54.603407+00:00"
+}

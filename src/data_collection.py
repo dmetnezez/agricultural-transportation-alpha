@@ -18,6 +18,7 @@ Transportation Report, https://agtransport.usda.gov). Dataset ids:
     8uye-ieij  Grain Transportation Cost Indicators (weekly index)
     deqi-uken  Downbound Grain Barge Rates (weekly, % of tariff)
     v85y-3hep  Grain Basis (weekly, incl. Iowa cash market)
+    vh5k-mnyv  Grain Vessel Loading Activity, Gulf & PNW (weekly, since 1995)
 
 Yahoo Finance chart API: ZC=F and ZS=F, CBOT front-month continuous futures
 (daily OHLCV). Expired single contracts are NOT available from Yahoo, which
@@ -109,6 +110,9 @@ AGT_QUERIES = {
         "SELECT date, commodity, sum(wkexportscmy) AS exports, sum(net_sales_total) AS net_sales, "
         "sum(outstanding_sales_total) AS outstanding WHERE commodity in ('Corn','Soybeans') "
         "AND date >= '2005-01-01' GROUP BY date, commodity ORDER BY date"),
+    # grain vessels at export ports (Gulf: in port, loaded last 7 days, due next 10 days)
+    "vessel_loading": ("vh5k-mnyv",
+        "SELECT date, port, in_port, loaded_7_days, due_10_days ORDER BY date, port"),
     "transport_cost_indicators": ("8uye-ieij",
         "SELECT date, truck, shuttle_train, barge, gulf_vessel, pacific_vessel ORDER BY date"),
     "barge_rates": ("deqi-uken", "SELECT date, location, rate ORDER BY date"),

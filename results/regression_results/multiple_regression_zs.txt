@@ -5,7 +5,7 @@ Dep. Variable:                  fwd_1   R-squared:                       0.112
 Model:                            OLS   Adj. R-squared:                  0.047
 Method:                 Least Squares   F-statistic:                     2.606
 Date:                Sun, 08 Nov 2026   Prob (F-statistic):           0.000382
-Time:                        20:58:26   Log-Likelihood:                 637.68
+Time:                        21:52:41   Log-Likelihood:                 637.68
 No. Observations:                 283   AIC:                            -1235.
 Df Residuals:                     263   BIC:                            -1162.
 Df Model:                          19                                         
@@ -47,44 +47,46 @@ Joint F-test transport coefficients = 0: stat=43.804, p=0.0000
 ===== Soybeans: Long-history national universe + controls (h=1) =====
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                  fwd_1   R-squared:                       0.021
-Model:                            OLS   Adj. R-squared:                 -0.004
-Method:                 Least Squares   F-statistic:                    0.8045
-Date:                Sun, 08 Nov 2026   Prob (F-statistic):              0.673
-Time:                        20:58:26   Log-Likelihood:                 1379.7
-No. Observations:                 624   AIC:                            -2727.
-Df Residuals:                     608   BIC:                            -2656.
-Df Model:                          15                                         
+Dep. Variable:                  fwd_1   R-squared:                       0.022
+Model:                            OLS   Adj. R-squared:                 -0.006
+Method:                 Least Squares   F-statistic:                    0.8141
+Date:                Sun, 08 Nov 2026   Prob (F-statistic):              0.677
+Time:                        21:52:41   Log-Likelihood:                 1380.1
+No. Observations:                 624   AIC:                            -2724.
+Df Residuals:                     606   BIC:                            -2644.
+Df Model:                          17                                         
 Covariance Type:                  HAC                                         
 ==============================================================================================
                                  coef    std err          z      P>|z|      [0.025      0.975]
 ----------------------------------------------------------------------------------------------
-const                          0.0043      0.004      1.180      0.238      -0.003       0.011
-nola_unloads__anomz          7.22e-05      0.001      0.048      0.961      -0.003       0.003
-insp_com_mt__anomz            -0.0074      0.005     -1.383      0.167      -0.018       0.003
-sales_com_exports__anomz       0.0086      0.006      1.539      0.124      -0.002       0.020
-sales_com_net_sales__anomz     0.0006      0.001      0.650      0.516      -0.001       0.002
-cost_truck__anomz             -0.0015      0.001     -1.032      0.302      -0.004       0.001
-cost_barge__anomz             -0.0101      0.005     -1.898      0.058      -0.020       0.000
-barge_rate_stl__anomz          0.0092      0.005      1.936      0.053      -0.000       0.019
-basis_ia_com__anomz           -0.0006      0.003     -0.175      0.861      -0.007       0.006
-basis_gulf_com__anomz          0.0021      0.002      1.064      0.287      -0.002       0.006
-mom_4w                        -0.0083      0.030     -0.275      0.783      -0.068       0.051
-mom_12w                        0.0058      0.018      0.314      0.754      -0.030       0.042
-vol_12w                       -0.0122      0.021     -0.585      0.558      -0.053       0.029
-harvest                       -0.0011      0.003     -0.356      0.722      -0.007       0.005
-planting                      -0.0002      0.003     -0.081      0.935      -0.006       0.005
-growing                       -0.0027      0.003     -0.834      0.404      -0.009       0.004
+const                          0.0043      0.004      1.177      0.239      -0.003       0.011
+nola_unloads__anomz           -0.0002      0.002     -0.082      0.935      -0.004       0.004
+insp_com_mt__anomz            -0.0080      0.005     -1.500      0.134      -0.018       0.002
+sales_com_exports__anomz       0.0092      0.006      1.651      0.099      -0.002       0.020
+sales_com_net_sales__anomz     0.0005      0.001      0.608      0.543      -0.001       0.002
+cost_truck__anomz             -0.0017      0.002     -1.115      0.265      -0.005       0.001
+cost_barge__anomz             -0.0106      0.005     -2.069      0.039      -0.021      -0.001
+barge_rate_stl__anomz          0.0100      0.005      2.150      0.032       0.001       0.019
+basis_ia_com__anomz           -0.0005      0.003     -0.140      0.889      -0.007       0.006
+basis_gulf_com__anomz          0.0020      0.002      1.016      0.310      -0.002       0.006
+vessel_gulf_loaded__anomz      0.0013      0.002      0.704      0.481      -0.002       0.005
+vessel_gulf_due__anomz        -0.0013      0.002     -0.763      0.445      -0.004       0.002
+mom_4w                        -0.0096      0.030     -0.321      0.749      -0.068       0.049
+mom_12w                        0.0058      0.018      0.316      0.752      -0.030       0.042
+vol_12w                       -0.0109      0.021     -0.531      0.595      -0.051       0.029
+harvest                       -0.0013      0.003     -0.417      0.677      -0.007       0.005
+planting                      -0.0005      0.003     -0.157      0.875      -0.006       0.005
+growing                       -0.0029      0.003     -0.885      0.376      -0.009       0.004
 ==============================================================================
-Omnibus:                        6.323   Durbin-Watson:                   1.989
-Prob(Omnibus):                  0.042   Jarque-Bera (JB):                8.131
-Skew:                          -0.086   Prob(JB):                       0.0172
-Kurtosis:                       3.532   Cond. No.                         58.5
+Omnibus:                        6.195   Durbin-Watson:                   1.992
+Prob(Omnibus):                  0.045   Jarque-Bera (JB):                7.957
+Skew:                          -0.082   Prob(JB):                       0.0187
+Kurtosis:                       3.528   Cond. No.                         63.4
 ==============================================================================
 
 Notes:
 [1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 3 lags and without small sample correction
-Joint F-test transport coefficients = 0: stat=8.501, p=0.4846
+Joint F-test transport coefficients = 0: stat=9.809, p=0.5477
 
 ===== Soybeans: Controls only, Iowa sample (h=1) =====
                             OLS Regression Results                            
@@ -93,7 +95,7 @@ Dep. Variable:                  fwd_1   R-squared:                       0.014
 Model:                            OLS   Adj. R-squared:                 -0.001
 Method:                 Least Squares   F-statistic:                    0.8797
 Date:                Sun, 08 Nov 2026   Prob (F-statistic):              0.510
-Time:                        20:58:26   Log-Likelihood:                 898.78
+Time:                        21:52:41   Log-Likelihood:                 898.78
 No. Observations:                 400   AIC:                            -1784.
 Df Residuals:                     393   BIC:                            -1756.
 Df Model:                           6                                         

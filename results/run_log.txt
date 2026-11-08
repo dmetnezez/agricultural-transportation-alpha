@@ -1,12 +1,13 @@
-[20:57:55] building point-in-time features
-[20:58:23] in-sample statistics
-[20:58:27] walk-forward univariate forecasts
-[20:58:31] walk-forward multivariate & ML forecasts
-[21:04:57] backtests
-[21:04:59] robustness
-[21:05:00] permutation test (circular shifts of the Iowa rail feature)
-[21:05:14] charts
-[21:05:19] done
+[21:52:12] building point-in-time features
+[21:52:37] primary price source: usda
+[21:52:37] in-sample statistics
+[21:52:41] walk-forward univariate forecasts
+[21:52:45] walk-forward multivariate & ML forecasts
+[21:57:56] backtests
+[21:57:57] robustness
+[21:57:59] permutation test (circular shifts of the Iowa rail feature)
+[21:58:09] charts
+[21:58:15] done
    commodity                            strategy  ann_return  ann_vol  sharpe  sharpe_ci_lo  sharpe_ci_hi  max_drawdown  n_trades  exposure
 0         zc                     STRAT iowa-rail       0.003    0.090   0.031        -0.779         0.855        -0.168        33     0.598
 1         zc            STRAT ridge (iowa univ.)       0.031    0.092   0.328        -0.853         1.664        -0.104        17     0.436

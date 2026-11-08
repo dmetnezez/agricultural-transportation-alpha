@@ -16,6 +16,7 @@ Publication-lag assumptions (conservative; all documented in README):
     transport cost indicators              : index date (Wed) + 1 day
     barge rates                            : quote date (Tue) + 2 days
     Iowa/IL/Gulf basis                     : quote date (Fri) + 6 days (next GTR)
+    grain vessel loading (Gulf/PNW)        : reading date (Thu) + 7 days (next GTR)
     FHWA TMAS traffic                      : published months later -> NOT tradable in
                                              real time; used only as an ex-post diagnostic.
 
@@ -159,6 +160,24 @@ def basis():
                         ("Gulf - Louisiana", "Soybeans", "basis_gulf_soy")]:
         s = b[(b.market_name == mk) & (b.commodity == com)].drop_duplicates("date")
         out.append(_series(s, "basis", 6, nm))
+    return out
+
+
+def vessels():
+    """Ocean grain vessels at US export ports (GTR table, Thursday dates since 1995).
+    Gulf: vessels in port, loaded in the last 7 days, due in the next 10 days.
+    PNW: vessels in port only. A Thursday reading is published in the FOLLOWING
+    Thursday's report (verified: latest row lags the latest report by a week),
+    so availability = date + 7 days."""
+    v = _read("vessel_loading")
+    out = []
+    for port, col, nm in [("Gulf", "loaded_7_days", "vessel_gulf_loaded"),
+                          ("Gulf", "due_10_days", "vessel_gulf_due"),
+                          ("Gulf", "in_port", "vessel_gulf_inport"),
+                          ("PNW", "in_port", "vessel_pnw_inport")]:
+        x = v[v.port == port].drop_duplicates("date").copy()
+        x[col] = pd.to_numeric(x[col], errors="coerce")
+        out.append(_series(x, col, 7, nm))
     return out
 
 
@@ -311,7 +330,7 @@ def futures_weekly_usda(sym: str) -> pd.DataFrame:
 
 def build_raw_weekly():
     series = []
-    for fn in (rail_cars, aar_grain, barge, inspections, export_sales, costs, basis, tmas_iowa):
+    for fn in (rail_cars, aar_grain, barge, inspections, export_sales, costs, basis, vessels, tmas_iowa):
         try:
             series += fn()
         except FileNotFoundError as e:

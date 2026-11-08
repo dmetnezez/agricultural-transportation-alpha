@@ -163,6 +163,7 @@ COMMODITY_SPECIFIC = {
 }
 SHARED = ["ia_railcars", "us_railcars", "aar_grain_carloads", "nola_unloads", "cost_truck",
           "cost_shuttle_train", "cost_barge", "cost_gulf_vessel", "barge_rate_stl",
+          "vessel_gulf_loaded", "vessel_gulf_due", "vessel_gulf_inport", "vessel_pnw_inport",
           "ia_rural_interstate_traffic"]
 
 

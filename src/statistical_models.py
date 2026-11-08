@@ -35,7 +35,8 @@ warnings.filterwarnings("ignore")
 TRANSPORT_BASES = ["ia_railcars", "us_railcars", "aar_grain_carloads", "barge_com_tons", "nola_unloads",
                    "insp_com_mt", "sales_com_exports", "sales_com_net_sales", "cost_truck",
                    "cost_shuttle_train", "cost_barge", "cost_gulf_vessel", "barge_rate_stl",
-                   "basis_ia_com", "basis_gulf_com"]
+                   "basis_ia_com", "basis_gulf_com",
+                   "vessel_gulf_loaded", "vessel_gulf_due", "vessel_gulf_inport", "vessel_pnw_inport"]
 IOWA_BASES = ["ia_railcars"]          # the only genuinely Iowa-specific transport measure
 PRIMARY = [f"{b}__anomz" for b in TRANSPORT_BASES]   # pre-specified primary transform
 CONTROLS = ["mom_4w", "mom_12w", "vol_12w", "harvest", "planting", "growing"]

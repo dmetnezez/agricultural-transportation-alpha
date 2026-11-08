@@ -19,7 +19,7 @@ This repo tests that hypothesis with point-in-time public data, walk-forward out
 
 The out-of-sample window runs from January 2022 to October 2026 (about 240 weeks). Out of 15 transportation variables × 2 commodities, **none** survives Benjamini-Hochberg correction out-of-sample. The multivariate models (OLS, ridge, lasso, random forest) do not meaningfully beat a historical-mean forecast. The kitchen-sink OLS has a strongly significant in-sample joint F-test but an OOS R² of −54% for corn, which is a textbook overfit.
 
-The only pattern worth more work: rail grain loadings above their seasonal norm (Iowa, all-US and AAR) tend to come before *higher* soybean returns. The sign is consistent across these three measures, but the effect is small and concentrated in 2022. → [Research report](docs/research_report.md)
+The only pattern worth more work: rail grain loadings above their seasonal norm (Iowa, all-US and AAR) tend to come before *higher* soybean returns. The sign is consistent across these three measures, but the effect is small and concentrated in 2022. Gulf export-vessel line-ups (USDA, since 1995) are the most promising corn lead: an OOS Sharpe of 0.54 over 2015-26, but not statistically significant. → [Research report](docs/research_report.md)
 
 ## Data (all public, all documented in `data/raw/*.meta.json`)
 
