@@ -56,6 +56,11 @@ def run_backtest(df: pd.DataFrame, pos: pd.Series, cost_mult=1.0, ticks=1.0) -> 
     d["price"] = df["price"].reindex(pos.index)
     c = cost_per_side(d.price.ffill().bfill(), ticks, cost_mult)  # price only scales tick costs
     trade = d.pos.diff().abs().fillna(d.pos.abs())
+    if "roll" in df:
+        # contract switch at this close: close the old contract AND open the new one
+        r = df["roll"].reindex(pos.index).fillna(False).astype(bool)
+        prev = d.pos.shift(1).fillna(0).abs()
+        trade = trade.where(~r, prev + d.pos.abs())
     d["gross"] = (d.pos * d.fwd_1).fillna(0.0)
     d["cost"] = trade * c
     d["pnl"] = d.gross - d.cost

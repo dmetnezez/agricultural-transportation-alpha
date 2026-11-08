@@ -4,6 +4,7 @@ Agricultural Transportation Alpha - full research pipeline.
     python main.py              # use data already in data/raw
     python main.py --download   # re-download USDA + Yahoo data first
     python main.py --download --tmas   # also FHWA Iowa traffic (~3 GB, slow)
+    python main.py --prices bloomberg  # contract-level prices from a Bloomberg export
 
 Outputs go to data/processed and results/.
 """
@@ -72,8 +73,12 @@ def main():
             DC.collect_tmas_iowa()
 
     log("building point-in-time features")
-    data = build_dataset(source="usda")           # primary returns (validated USDA prints)
-    data_alt = build_dataset(source="yahoo")      # robustness returns (Yahoo front month)
+    # --prices bloomberg : contract-level settlements from a Bloomberg export (best)
+    # default            : validated USDA weekly prints; Yahoo front month as robustness
+    prices = sys.argv[sys.argv.index("--prices") + 1] if "--prices" in sys.argv else "usda"
+    data = build_dataset(source=prices)
+    data_alt = build_dataset(source="yahoo" if prices != "yahoo" else "usda", save=False)
+    log(f"primary price source: {prices}")
     summary = {}
 
     # ---------------------------------------------------------------- in-sample
@@ -251,7 +256,7 @@ def main():
                         oos_r2=stu.get("oos_r2_vs_mean"), cw_p=stu.get("cw_p"), **m))
         stp = S.oos_stats(df["fwd_1"], p, preds[sym]["hist_mean"].reindex(p.index))
         m = eval_window(strat(df, p), *win)
-        rob.append(dict(commodity=sym, series="iowa-rail", test="price_source", value="usda_weekly (primary)",
+        rob.append(dict(commodity=sym, series="iowa-rail", test="price_source", value=f"{prices} (primary)",
                         oos_r2=stp.get("oos_r2_vs_mean"), cw_p=stp.get("cw_p"), **m))
         # execution delay: trade one week later than the signal
         pdl = p.shift(1)

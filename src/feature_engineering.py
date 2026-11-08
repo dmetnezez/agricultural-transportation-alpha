@@ -100,18 +100,32 @@ def align_point_in_time(trans: pd.DataFrame, weeks: pd.DatetimeIndex) -> pd.Data
     return m.set_index("week")[cols]
 
 
-def market_features(sym: str, source: str = "usda") -> pd.DataFrame:
+def market_features(sym: str, source: str = "usda", live: bool = False) -> pd.DataFrame:
     """source='usda' (PRIMARY): USDA AMS weekly reference-contract prints,
     validated (see data_cleaning.futures_weekly_usda).
     source='yahoo' (robustness): CBOT front month, Friday close, with
-    roll/delivery-window weeks removed."""
+    roll/delivery-window weeks removed.
+    source='bloomberg': contract-level CBOT settlements from a Bloomberg
+    export, rolled 5 business days before first notice (bloomberg.py)."""
     y = futures_weekly(sym).set_index("week")
     u = futures_weekly_usda(sym).set_index("week")
-    if source == "yahoo":
+    roll = None
+    if source == "bloomberg":
+        # contract-level settlements, roll-correct (see bloomberg.py); USDA as the alternative
+        import bloomberg
+        b = bloomberg.weekly_continuous(bloomberg.load_any(), sym).set_index("week")
+        price, r, alt, roll = b["close"] / 100, b["ret"], u["ret"], b["roll"]
+    elif source == "yahoo":
         price, r, alt = y["close"] / 100, y["ret_clean"], u["ret"]
     else:
         price, r, alt = u["close"], u["ret"], y["ret_clean"]
     idx = price.index[price.index >= "2005-01-01"]
+    if live:
+        # add the current week's Friday so the live forecast uses this week's
+        # transport releases even before this week's futures price is published
+        this_fri = pd.Timestamp.today().normalize().to_period("W-FRI").end_time.normalize()
+        if this_fri not in idx:
+            idx = idx.append(pd.DatetimeIndex([this_fri]))
     price, r = price.reindex(idx), r.reindex(idx)
     out = pd.DataFrame(index=idx)
     out["price"] = price.ffill()  # only used to convert tick costs to % (never for returns)
@@ -121,9 +135,13 @@ def market_features(sym: str, source: str = "usda") -> pd.DataFrame:
     out["mom_12w"] = r.rolling(12, min_periods=8).sum()
     out["vol_12w"] = r.rolling(12, min_periods=8).std() * np.sqrt(52)
     out["vol_26w"] = r.rolling(26, min_periods=16).std() * np.sqrt(52)
+    if live:
+        out[["vol_12w", "vol_26w", "price"]] = out[["vol_12w", "vol_26w", "price"]].ffill()
     for h in (1, 2, 4):
         out[f"fwd_{h}"] = sum(r.shift(-k) for k in range(1, h + 1))  # NaN if any leg excluded
     out["fwd_1_alt"] = alt.reindex(idx).shift(-1)   # other price source, robustness
+    if roll is not None:
+        out["roll"] = roll.reindex(idx).fillna(False).astype(bool)   # contract changes at this close
     return out
 
 
@@ -148,12 +166,12 @@ SHARED = ["ia_railcars", "us_railcars", "aar_grain_carloads", "nola_unloads", "c
           "ia_rural_interstate_traffic"]
 
 
-def build_dataset(save=True, source="usda") -> dict[str, pd.DataFrame]:
+def build_dataset(save=True, source="usda", live=False) -> dict[str, pd.DataFrame]:
     raw = build_raw_weekly()
     trans = {r.columns[1]: transform_series(r) for r in raw}
     out = {}
     for sym in ("zc", "zs"):
-        mkt = market_features(sym, source)
+        mkt = market_features(sym, source, live)
         weeks = mkt.index
         feats = [align_point_in_time(trans[n], weeks) for n in SHARED + COMMODITY_SPECIFIC[sym] if n in trans]
         df = pd.concat([mkt, seasonality(weeks)] + feats, axis=1)

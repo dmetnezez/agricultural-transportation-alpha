@@ -9,3 +9,4 @@ requests>=2.31
 nbformat>=5.9
 nbconvert>=7.0
 ipykernel>=6.0
+ib_async>=1.0   # optional: IB paper trading

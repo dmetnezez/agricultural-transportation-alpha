@@ -2,3 +2,8 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 .pytest_cache/
+# Bloomberg data may not be redistributed
+data/raw/bloomberg/
+bloomberg/*export*.xlsx
+# live trading artefacts
+results/live/
