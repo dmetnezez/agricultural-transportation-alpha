@@ -1,0 +1,8 @@
+{
+  "source": "USDA AMS AgTransport",
+  "dataset_id": "deqi-uken",
+  "url": "https://agtransport.usda.gov/d/deqi-uken",
+  "soql": "SELECT date, location, rate ORDER BY date",
+  "rows": 8344,
+  "downloaded_utc": "2026-11-08T20:08:18.942373+00:00"
+}

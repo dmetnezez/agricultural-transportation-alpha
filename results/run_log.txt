@@ -1,0 +1,79 @@
+[20:57:55] building point-in-time features
+[20:58:23] in-sample statistics
+[20:58:27] walk-forward univariate forecasts
+[20:58:31] walk-forward multivariate & ML forecasts
+[21:04:57] backtests
+[21:04:59] robustness
+[21:05:00] permutation test (circular shifts of the Iowa rail feature)
+[21:05:14] charts
+[21:05:19] done
+   commodity                            strategy  ann_return  ann_vol  sharpe  sharpe_ci_lo  sharpe_ci_hi  max_drawdown  n_trades  exposure
+0         zc                     STRAT iowa-rail       0.003    0.090   0.031        -0.779         0.855        -0.168        33     0.598
+1         zc            STRAT ridge (iowa univ.)       0.031    0.092   0.328        -0.853         1.664        -0.104        17     0.436
+2         zc  STRAT best-univariate (iowa univ.)       0.048    0.079   0.593        -0.259         1.764        -0.085        21     0.517
+3         zc                                cash       0.000    0.000     NaN         0.000         0.000         0.000         0     0.000
+4         zc                         buy_hold_1x      -0.019    0.191  -0.098        -0.820         0.789        -0.374        27     0.797
+5         zc                      long_voltarget      -0.002    0.105  -0.015        -0.775         0.878        -0.203        27     0.797
+6         zc                        momentum_12w      -0.012    0.102  -0.121        -1.215         0.765        -0.286        53     0.699
+7         zc                         momentum_4w      -0.012    0.100  -0.122        -1.138         0.559        -0.234        55     0.675
+8         zs                     STRAT iowa-rail       0.021    0.084   0.249        -0.629         0.922        -0.111        33     0.563
+9         zs            STRAT ridge (iowa univ.)      -0.043    0.078  -0.560        -1.345         0.398        -0.128        15     0.551
+10        zs  STRAT best-univariate (iowa univ.)      -0.003    0.073  -0.043        -1.145         0.867        -0.068        20     0.376
+11        zs                                cash       0.000    0.000     NaN         0.000         0.000         0.000         0     0.000
+12        zs                         buy_hold_1x       0.015    0.164   0.088        -0.832         0.717        -0.321        26     0.824
+13        zs                      long_voltarget      -0.015    0.095  -0.157        -1.076         0.462        -0.231        25     0.756
+14        zs                        momentum_12w      -0.074    0.094  -0.810        -1.905         0.183        -0.364        55     0.756
+15        zs                         momentum_4w      -0.036    0.094  -0.386        -1.473         0.568        -0.250        62     0.731
+{
+ "zc": {
+  "n_weeks": 847,
+  "in_sample_bh_significant_h1": [
+   "aar_grain_carloads__anomz"
+  ],
+  "in_sample_bh_significant_any": [
+   [
+    "aar_grain_carloads__anomz",
+    1
+   ],
+   [
+    "aar_grain_carloads__anomz",
+    2
+   ]
+  ],
+  "oos_window": [
+   "2022-01-21",
+   "2026-10-23"
+  ],
+  "permutation_p": 0.4
+ },
+ "zs": {
+  "n_weeks": 840,
+  "in_sample_bh_significant_h1": [
+   "ia_railcars__anomz",
+   "aar_grain_carloads__anomz"
+  ],
+  "in_sample_bh_significant_any": [
+   [
+    "ia_railcars__anomz",
+    1
+   ],
+   [
+    "aar_grain_carloads__anomz",
+    1
+   ],
+   [
+    "aar_grain_carloads__anomz",
+    2
+   ],
+   [
+    "ia_railcars__anomz",
+    4
+   ]
+  ],
+  "oos_window": [
+   "2021-12-31",
+   "2026-08-07"
+  ],
+  "permutation_p": 0.12666666666666668
+ }
+}

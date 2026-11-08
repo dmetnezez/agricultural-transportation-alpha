@@ -1,0 +1,53 @@
+{
+  "zc": {
+    "n_weeks": 847,
+    "in_sample_bh_significant_h1": [
+      "aar_grain_carloads__anomz"
+    ],
+    "in_sample_bh_significant_any": [
+      [
+        "aar_grain_carloads__anomz",
+        1
+      ],
+      [
+        "aar_grain_carloads__anomz",
+        2
+      ]
+    ],
+    "oos_window": [
+      "2022-01-21",
+      "2026-10-23"
+    ],
+    "permutation_p": 0.4
+  },
+  "zs": {
+    "n_weeks": 840,
+    "in_sample_bh_significant_h1": [
+      "ia_railcars__anomz",
+      "aar_grain_carloads__anomz"
+    ],
+    "in_sample_bh_significant_any": [
+      [
+        "ia_railcars__anomz",
+        1
+      ],
+      [
+        "aar_grain_carloads__anomz",
+        1
+      ],
+      [
+        "aar_grain_carloads__anomz",
+        2
+      ],
+      [
+        "ia_railcars__anomz",
+        4
+      ]
+    ],
+    "oos_window": [
+      "2021-12-31",
+      "2026-08-07"
+    ],
+    "permutation_p": 0.12666666666666668
+  }
+}

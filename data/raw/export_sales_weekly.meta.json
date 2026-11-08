@@ -1,0 +1,8 @@
+{
+  "source": "USDA AMS AgTransport",
+  "dataset_id": "wnn7-29tu",
+  "url": "https://agtransport.usda.gov/d/wnn7-29tu",
+  "soql": "SELECT date, commodity, sum(wkexportscmy) AS exports, sum(net_sales_total) AS net_sales, sum(outstanding_sales_total) AS outstanding WHERE commodity in ('Corn','Soybeans') AND date >= '2005-01-01' GROUP BY date, commodity ORDER BY date",
+  "rows": 2278,
+  "downloaded_utc": "2026-11-08T20:08:16.324695+00:00"
+}

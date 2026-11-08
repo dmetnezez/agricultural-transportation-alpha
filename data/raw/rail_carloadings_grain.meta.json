@@ -1,0 +1,8 @@
+{
+  "source": "USDA AMS AgTransport",
+  "dataset_id": "tb7q-kn5i",
+  "url": "https://agtransport.usda.gov/d/tb7q-kn5i",
+  "soql": "SELECT date, submission_date, railroad, type, carloads WHERE commodity = 'Grain' ORDER BY date, railroad",
+  "rows": 6872,
+  "downloaded_utc": "2026-11-08T20:08:05.955466+00:00"
+}

@@ -1,0 +1,11 @@
+pandas>=2.2
+numpy>=1.26
+scipy>=1.11
+statsmodels>=0.14
+scikit-learn>=1.5
+matplotlib>=3.8
+requests>=2.31
+# notebooks only
+nbformat>=5.9
+nbconvert>=7.0
+ipykernel>=6.0

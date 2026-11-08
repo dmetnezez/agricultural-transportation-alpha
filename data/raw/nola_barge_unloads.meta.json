@@ -1,0 +1,8 @@
+{
+  "source": "USDA AMS AgTransport",
+  "dataset_id": "spd3-ku7f",
+  "url": "https://agtransport.usda.gov/d/spd3-ku7f",
+  "soql": "SELECT date, unloads ORDER BY date",
+  "rows": 1097,
+  "downloaded_utc": "2026-11-08T20:08:13.888717+00:00"
+}

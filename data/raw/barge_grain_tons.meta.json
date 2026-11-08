@@ -1,0 +1,8 @@
+{
+  "source": "USDA AMS AgTransport",
+  "dataset_id": "n4pw-9ygw",
+  "url": "https://agtransport.usda.gov/d/n4pw-9ygw",
+  "soql": "SELECT date, commodity, lock, tons WHERE commodity in ('Corn','Soybeans') ORDER BY date, lock",
+  "rows": 13240,
+  "downloaded_utc": "2026-11-08T20:08:07.080905+00:00"
+}

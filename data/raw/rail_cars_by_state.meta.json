@@ -1,0 +1,8 @@
+{
+  "source": "USDA AMS AgTransport",
+  "dataset_id": "27k8-utc2",
+  "url": "https://agtransport.usda.gov/d/27k8-utc2",
+  "soql": "SELECT date, submission_date, railroad, state, `all`, dedicated_or_shuttle, other ORDER BY date, railroad, state",
+  "rows": 45753,
+  "downloaded_utc": "2026-11-08T20:08:04.388721+00:00"
+}

@@ -1,0 +1,8 @@
+{
+  "source": "USDA AMS AgTransport",
+  "dataset_id": "8uye-ieij",
+  "url": "https://agtransport.usda.gov/d/8uye-ieij",
+  "soql": "SELECT date, truck, shuttle_train, barge, gulf_vessel, pacific_vessel ORDER BY date",
+  "rows": 1263,
+  "downloaded_utc": "2026-11-08T20:08:17.185908+00:00"
+}

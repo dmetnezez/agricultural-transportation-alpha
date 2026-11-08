@@ -1,0 +1,8 @@
+{
+  "source": "USDA AMS AgTransport",
+  "dataset_id": "sruw-w49i",
+  "url": "https://agtransport.usda.gov/d/sruw-w49i",
+  "soql": "SELECT date_trunc_ymd(cert_date) AS day, grain, sum(mt) AS mt WHERE grain in ('CORN','SOYBEANS') AND cert_date >= '2005-01-01' GROUP BY day, grain ORDER BY day",
+  "rows": 15666,
+  "downloaded_utc": "2026-11-08T20:08:15.281680+00:00"
+}

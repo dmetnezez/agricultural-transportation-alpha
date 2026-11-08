@@ -1,0 +1,8 @@
+{
+  "source": "USDA AMS AgTransport",
+  "dataset_id": "v85y-3hep",
+  "url": "https://agtransport.usda.gov/d/v85y-3hep",
+  "soql": "SELECT date, market_name, market_type, commodity, bid, contract_month, futures_price, basis WHERE market_name in ('Iowa','Illinois','Gulf - Louisiana') AND commodity in ('Corn','Soybeans') ORDER BY date",
+  "rows": 6013,
+  "downloaded_utc": "2026-11-08T20:08:20.000956+00:00"
+}

@@ -1,0 +1,8 @@
+{
+  "source": "Yahoo Finance chart API",
+  "ticker": "ZS=F",
+  "url": "https://query1.finance.yahoo.com/v8/finance/chart/ZS=F",
+  "note": "front-month continuous, NOT roll-adjusted, prices in US cents/bu",
+  "rows": 6576,
+  "downloaded_utc": "2026-11-08T20:08:21.101581+00:00"
+}

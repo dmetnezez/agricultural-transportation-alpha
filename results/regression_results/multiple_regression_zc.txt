@@ -1,0 +1,121 @@
+===== Corn: Iowa universe + controls (h=1) =====
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  fwd_1   R-squared:                       0.151
+Model:                            OLS   Adj. R-squared:                  0.081
+Method:                 Least Squares   F-statistic:                     2.351
+Date:                Sun, 08 Nov 2026   Prob (F-statistic):            0.00162
+Time:                        20:58:25   Log-Likelihood:                 522.34
+No. Observations:                 250   AIC:                            -1005.
+Df Residuals:                     230   BIC:                            -934.3
+Df Model:                          19                                         
+Covariance Type:                  HAC                                         
+==============================================================================================
+                                 coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------
+const                         -0.0058      0.007     -0.892      0.372      -0.019       0.007
+ia_railcars__anomz             0.0033      0.003      1.059      0.290      -0.003       0.009
+us_railcars__anomz             0.0020      0.004      0.573      0.567      -0.005       0.009
+barge_com_tons__anomz         -0.0040      0.003     -1.452      0.147      -0.009       0.001
+nola_unloads__anomz            0.0011      0.003      0.340      0.734      -0.005       0.008
+insp_com_mt__anomz            -0.0175      0.021     -0.818      0.413      -0.059       0.024
+sales_com_exports__anomz       0.0283      0.021      1.342      0.180      -0.013       0.070
+sales_com_net_sales__anomz     0.0023      0.002      0.971      0.332      -0.002       0.007
+cost_truck__anomz             -0.0040      0.004     -1.121      0.262      -0.011       0.003
+cost_barge__anomz             -0.0182      0.014     -1.257      0.209      -0.047       0.010
+cost_gulf_vessel__anomz       -0.0002      0.004     -0.046      0.964      -0.008       0.008
+barge_rate_stl__anomz          0.0152      0.012      1.307      0.191      -0.008       0.038
+basis_ia_com__anomz            0.0045      0.005      0.842      0.400      -0.006       0.015
+basis_gulf_com__anomz          0.0035      0.004      0.801      0.423      -0.005       0.012
+mom_4w                        -0.1120      0.059     -1.891      0.059      -0.228       0.004
+mom_12w                       -0.0431      0.029     -1.493      0.135      -0.100       0.013
+vol_12w                        0.0318      0.030      1.066      0.286      -0.027       0.090
+harvest                        0.0021      0.005      0.464      0.643      -0.007       0.011
+planting                       0.0018      0.005      0.328      0.743      -0.009       0.012
+growing                       -0.0237      0.007     -3.259      0.001      -0.038      -0.009
+==============================================================================
+Omnibus:                       17.984   Durbin-Watson:                   2.076
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               42.070
+Skew:                          -0.290   Prob(JB):                     7.32e-10
+Kurtosis:                       4.924   Cond. No.                         58.3
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 3 lags and without small sample correction
+Joint F-test transport coefficients = 0: stat=33.620, p=0.0014
+
+===== Corn: Long-history national universe + controls (h=1) =====
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  fwd_1   R-squared:                       0.054
+Model:                            OLS   Adj. R-squared:                  0.030
+Method:                 Least Squares   F-statistic:                     2.509
+Date:                Sun, 08 Nov 2026   Prob (F-statistic):            0.00132
+Time:                        20:58:25   Log-Likelihood:                 1235.7
+No. Observations:                 604   AIC:                            -2439.
+Df Residuals:                     588   BIC:                            -2369.
+Df Model:                          15                                         
+Covariance Type:                  HAC                                         
+==============================================================================================
+                                 coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------
+const                         -0.0033      0.003     -0.992      0.321      -0.010       0.003
+nola_unloads__anomz           -0.0006      0.002     -0.332      0.740      -0.004       0.003
+insp_com_mt__anomz             0.0065      0.010      0.650      0.515      -0.013       0.026
+sales_com_exports__anomz      -0.0035      0.010     -0.356      0.722      -0.023       0.016
+sales_com_net_sales__anomz     0.0026      0.001      1.803      0.071      -0.000       0.005
+cost_truck__anomz             -0.0015      0.002     -0.825      0.409      -0.005       0.002
+cost_barge__anomz             -0.0161      0.007     -2.322      0.020      -0.030      -0.003
+barge_rate_stl__anomz          0.0154      0.006      2.550      0.011       0.004       0.027
+basis_ia_com__anomz           -0.0006      0.003     -0.220      0.826      -0.006       0.005
+basis_gulf_com__anomz          0.0031      0.002      1.317      0.188      -0.002       0.008
+mom_4w                        -0.0716      0.032     -2.268      0.023      -0.134      -0.010
+mom_12w                       -0.0063      0.019     -0.334      0.738      -0.043       0.031
+vol_12w                        0.0323      0.017      1.902      0.057      -0.001       0.066
+harvest                       -0.0026      0.003     -0.836      0.403      -0.009       0.004
+planting                      -0.0027      0.004     -0.776      0.438      -0.010       0.004
+growing                       -0.0151      0.004     -3.398      0.001      -0.024      -0.006
+==============================================================================
+Omnibus:                       37.207   Durbin-Watson:                   1.970
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               98.046
+Skew:                          -0.277   Prob(JB):                     5.12e-22
+Kurtosis:                       4.895   Cond. No.                         56.0
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 3 lags and without small sample correction
+Joint F-test transport coefficients = 0: stat=23.169, p=0.0058
+
+===== Corn: Controls only, Iowa sample (h=1) =====
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  fwd_1   R-squared:                       0.043
+Model:                            OLS   Adj. R-squared:                  0.027
+Method:                 Least Squares   F-statistic:                     2.728
+Date:                Sun, 08 Nov 2026   Prob (F-statistic):             0.0133
+Time:                        20:58:25   Log-Likelihood:                 758.42
+No. Observations:                 365   AIC:                            -1503.
+Df Residuals:                     358   BIC:                            -1476.
+Df Model:                           6                                         
+Covariance Type:                  HAC                                         
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+const         -0.0050      0.004     -1.272      0.203      -0.013       0.003
+mom_4w        -0.0252      0.057     -0.440      0.660      -0.137       0.087
+mom_12w       -0.0035      0.025     -0.141      0.888      -0.052       0.045
+vol_12w        0.0496      0.022      2.298      0.022       0.007       0.092
+harvest       -0.0012      0.003     -0.378      0.705      -0.008       0.005
+planting      -0.0002      0.005     -0.034      0.973      -0.009       0.009
+growing       -0.0189      0.006     -3.291      0.001      -0.030      -0.008
+==============================================================================
+Omnibus:                       33.479   Durbin-Watson:                   2.127
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              160.913
+Skew:                          -0.056   Prob(JB):                     1.14e-35
+Kurtosis:                       6.251   Cond. No.                         27.7
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity and autocorrelation robust (HAC) using 3 lags and without small sample correction
+Joint F-test transport coefficients = 0: n/a
+
